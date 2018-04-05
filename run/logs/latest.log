@@ -1,0 +1,57 @@
+[18:57:46] [main/INFO]: Setting user: Player470
+[18:57:49] [main/INFO]: LWJGL Version: 2.9.4
+[18:57:52] [main/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Heroes-United
+[18:57:55] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[18:57:55] [Thread-5/INFO]: Initializing LWJGL OpenAL
+[18:57:55] [Thread-5/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[18:57:55] [Thread-5/INFO]: OpenAL initialized.
+[18:57:55] [Sound Library Loader/INFO]: Sound engine started
+[18:57:59] [main/INFO]: Created: 512x512 textures-atlas
+[18:58:00] [main/INFO]: Narrator library for x64 successfully loaded
+[18:58:01] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[18:58:10] [Server thread/INFO]: Starting integrated minecraft server version 1.12.2
+[18:58:10] [Server thread/INFO]: Generating keypair
+[18:58:10] [Server thread/INFO]: Loaded 488 advancements
+[18:58:11] [Server thread/INFO]: Preparing start region for level 0
+[18:58:12] [Server thread/INFO]: Preparing spawn area: 9%
+[18:58:13] [Server thread/INFO]: Preparing spawn area: 21%
+[18:58:14] [Server thread/INFO]: Preparing spawn area: 35%
+[18:58:15] [Server thread/INFO]: Preparing spawn area: 49%
+[18:58:16] [Server thread/INFO]: Preparing spawn area: 63%
+[18:58:17] [Server thread/INFO]: Preparing spawn area: 78%
+[18:58:18] [Server thread/INFO]: Preparing spawn area: 93%
+[18:58:19] [Server thread/INFO]: Changing view distance to 12, from 10
+[18:58:19] [Server thread/INFO]: Player470[local:E:ab286ce0] logged in with entity id 954 at (39.5, 64.0, 205.5)
+[18:58:19] [Server thread/INFO]: Player470 joined the game
+[18:58:21] [pool-2-thread-1/WARN]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@103178bc[id=f861b4cb-4ad2-3047-bede-1f92822d0050,name=Player470,properties={},legacy=false]
+com.mojang.authlib.exceptions.AuthenticationException: The client has sent too many requests within a certain amount of time
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:79) ~[YggdrasilAuthenticationService.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:180) [YggdrasilMinecraftSessionService.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:60) [YggdrasilMinecraftSessionService$1.class:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:57) [YggdrasilMinecraftSessionService$1.class:?]
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3716) [guava-21.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2424) [guava-21.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2298) [guava-21.0.jar:?]
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2211) [guava-21.0.jar:?]
+	at com.google.common.cache.LocalCache.get(LocalCache.java:4154) [guava-21.0.jar:?]
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:4158) [guava-21.0.jar:?]
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:5147) [guava-21.0.jar:?]
+	at com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:5153) [guava-21.0.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillProfileProperties(YggdrasilMinecraftSessionService.java:170) [YggdrasilMinecraftSessionService.class:?]
+	at net.minecraft.client.Minecraft.getProfileProperties(Minecraft.java:3188) [Minecraft.class:?]
+	at net.minecraft.client.resources.SkinManager$3.run(SkinManager.java:138) [SkinManager$3.class:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_152]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_152]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_152]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_152]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_152]
+[18:58:21] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2549ms behind, skipping 50 tick(s)
+[18:58:42] [main/INFO]: Stopping!
+[18:58:43] [Server thread/INFO]: Stopping server
+[18:58:43] [Server thread/INFO]: Saving players
+[18:58:43] [Server thread/INFO]: Saving worlds
+[18:58:43] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[18:58:43] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[18:58:43] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[18:58:44] [main/INFO]: SoundSystem shutting down...
+[18:58:44] [main/WARN]: Author: Paul Lamb, www.paulscode.com
