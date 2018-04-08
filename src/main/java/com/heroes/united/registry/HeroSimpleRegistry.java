@@ -47,6 +47,10 @@ public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends Registry
         return HashBiMap.create();
     }
 
+    public String getNameForObject(T value) {
+        return (String) nameLookup.get(value);
+    }
+
     @Override
     public boolean containsKey(Object key) {
         return containsKey((String) key);

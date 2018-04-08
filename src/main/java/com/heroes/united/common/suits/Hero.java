@@ -2,6 +2,7 @@ package com.heroes.united.common.suits;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
+import com.heroes.united.Main;
 import com.heroes.united.common.abilities.Ability;
 import com.heroes.united.common.abilities.IAbility;
 import com.heroes.united.common.abilities.IAbilityContainer;
@@ -11,6 +12,8 @@ import com.heroes.united.common.items.ItemHero;
 import com.heroes.united.common.items.Tiers;
 import com.heroes.united.common.weakness.Weakness;
 import com.heroes.united.helper.ModHelper;
+import com.heroes.united.registry.HeroRegistryEntry;
+import com.heroes.united.registry.HeroRegistryNamespaced;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,20 +23,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbility {
-
+public abstract class Hero extends HeroRegistryEntry<Hero> implements Comparable<Hero>, Predicate<Entity>, IAbility {
     private final ImmutableList<Ability> abilities;
     private final ImmutableList<Weakness> weaknesses;
     protected Item helmet;
     protected Item chestplate;
     protected Item leggings;
     protected Item boots;
-    private String name;
-    private Hero hero;
 
-    public Hero(String name, Hero hero) {
-        this.name = name;
-        this.hero = hero;
+    public static final HeroRegistryNamespaced<Hero> REGISTRY = new HeroRegistryNamespaced(Main.MODID, "heroes_united");
+
+    public Hero() {
         final ImmutableList.Builder abilityBuilder = ImmutableList.builder();
         final ImmutableList.Builder weaknessBuilder = ImmutableList.builder();
         this.getAbilities(new IAbilityContainer() {
@@ -60,6 +60,18 @@ public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbil
             }
         });
         this.weaknesses = weaknessBuilder.build();
+    }
+
+    public static void register(String key, Hero value) {
+        REGISTRY.putObject(key, value);
+    }
+
+    public static Hero getHeroFromName(String key) {
+        return REGISTRY.getObject(key);
+    }
+
+    public static String getNameForHero(Hero value) {
+        return REGISTRY.getNameForObject(value);
     }
 
     public abstract void init();
@@ -101,16 +113,8 @@ public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbil
         return itemstacks;
     }
 
-    public String getHeroName() {
-        return this.name;
-    }
-
-    public Hero getHero() {
-        return this.hero;
-    }
-
     public String getUnlocalizedName() {
-        return "hero." + this.getHeroName();
+        return "hero." + this.delegate.name();
     }
 
     public String getLocalizedName() {
