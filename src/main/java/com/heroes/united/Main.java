@@ -27,7 +27,7 @@ public class Main {
     @Mod.Instance(Main.MODID)
     public static Main INSTANCE;
 
-    @SidedProxy(clientSide = "com.suits.united.client.ClientProxy", serverSide = "com.suits.united.common.CommonProxy")
+    @SidedProxy(clientSide = "com.heroes.united.client.ClientProxy", serverSide = "com.suits.heroes.common.CommonProxy")
     public static CommonProxy PROXY;
 
     @Mod.EventHandler
