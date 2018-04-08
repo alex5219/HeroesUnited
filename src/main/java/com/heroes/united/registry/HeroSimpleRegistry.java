@@ -69,8 +69,7 @@ public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends Registry
     }
 
     @Override
-    public Set<String> getKeys()
-    {
+    public Set<String> getKeys() {
         return super.getKeys();
     }
 
