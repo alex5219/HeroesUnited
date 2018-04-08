@@ -23,7 +23,7 @@ public class Weakness implements Comparable<Weakness>, Predicate<EntityLivingBas
         this.hero = hero;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 

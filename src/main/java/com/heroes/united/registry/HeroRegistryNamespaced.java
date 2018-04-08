@@ -4,19 +4,15 @@ import net.minecraft.util.ObjectIntIdentityMap;
 
 import java.util.Iterator;
 
-public class HeroRegistryNamespaced<T extends HeroRegistryEntry<T>> extends HeroSimpleRegistry<T>
-{
+public class HeroRegistryNamespaced<T extends HeroRegistryEntry<T>> extends HeroSimpleRegistry<T> {
     protected ObjectIntIdentityMap underlyingIntegerMap = new ObjectIntIdentityMap();
     private int nextId = -1;
 
-    public HeroRegistryNamespaced(String domain, String key)
-    {
+    public HeroRegistryNamespaced(String domain, String key) {
         super(domain, key);
     }
 
-    @Override
-    public void putObject(String key, T value)
-    {
+    public void putObject(String key, T value) {
         addObject(++nextId, key, value);
     }
 
@@ -25,13 +21,11 @@ public class HeroRegistryNamespaced<T extends HeroRegistryEntry<T>> extends Hero
         super.putObject(key, value);
     }
 
-    public int getIDForObject(T value)
-    {
+    public int getIDForObject(T value) {
         return underlyingIntegerMap.get(value);
     }
 
-    public T getObjectById(int id)
-    {
+    public T getObjectById(int id) {
         return (T) underlyingIntegerMap.getByValue(id);
     }
 
@@ -39,28 +33,22 @@ public class HeroRegistryNamespaced<T extends HeroRegistryEntry<T>> extends Hero
         return underlyingIntegerMap.getByValue(id) != null;
     }
 
-    public Iterator iterator()
-    {
+    public Iterator iterator() {
         return underlyingIntegerMap.iterator();
     }
 
     public T lookup(String key) {
-        if (containsKey(key))
-        {
+        if (containsKey(key)) {
             return getObject(key);
         }
 
-        try
-        {
+        try {
             int id = Integer.parseInt(key);
 
-            if (containsId(id))
-            {
+            if (containsId(id)) {
                 return getObjectById(id);
             }
-        }
-        catch (NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
         }
 
         return null;

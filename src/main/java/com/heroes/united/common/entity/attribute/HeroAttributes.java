@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class HeroAttributes {
-    private static final UUID UUID_HEALTH_MOD = UUID.randomUUID();
     public static final ArmorAttribute SWORD_DAMAGE = new ArmorAttribute("swordDamage", true);
     public static final ArmorAttribute PUNCH_DAMAGE = new ArmorAttribute("punchDamage", true);
     public static final ArmorAttribute BOW_DRAWBACK = new ArmorAttribute("bowDrawback", false);
@@ -26,6 +25,7 @@ public class HeroAttributes {
     public static final ArmorAttribute JUMP_HEIGHT = new ArmorAttribute("jumpHeight", true);
     public static final ArmorAttribute SPRINT_SPEED = new ArmorAttribute("sprintSpeed", true);
     public static final ArmorAttribute DAMAGE_REDUCTION = new ArmorAttribute("damageReduction", true);
+    private static final UUID UUID_HEALTH_MOD = UUID.randomUUID();
 
     public HeroAttributes() {
     }

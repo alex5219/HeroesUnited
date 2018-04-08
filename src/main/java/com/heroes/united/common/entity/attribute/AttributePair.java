@@ -22,7 +22,7 @@ public class AttributePair {
         if (!(obj instanceof AttributePair)) {
             return false;
         } else {
-            AttributePair pair = (AttributePair)obj;
+            AttributePair pair = (AttributePair) obj;
             return pair.amount.equals(this.amount) && pair.operation.equals(this.operation);
         }
     }

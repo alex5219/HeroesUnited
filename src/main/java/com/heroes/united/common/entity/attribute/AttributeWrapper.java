@@ -3,12 +3,13 @@ package com.heroes.united.common.entity.attribute;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import net.minecraft.entity.ai.attributes.IAttribute;
+
 import java.util.Iterator;
 import java.util.List;
 
 public class AttributeWrapper {
-    private final List<AttributePair> modifiers = Lists.newArrayList();
     public final IAttribute attribute;
+    private final List<AttributePair> modifiers = Lists.newArrayList();
 
     public AttributeWrapper(IAttribute attribute) {
         this.attribute = attribute;
@@ -18,8 +19,8 @@ public class AttributeWrapper {
         List<Double> list = Lists.newArrayList();
         Iterator var3 = this.modifiers.iterator();
 
-        while(var3.hasNext()) {
-            AttributePair pair = (AttributePair)var3.next();
+        while (var3.hasNext()) {
+            AttributePair pair = (AttributePair) var3.next();
             if (operation == pair.operation) {
                 list.add(pair.amount);
             }
@@ -46,18 +47,18 @@ public class AttributeWrapper {
         double amount;
         Iterator iter;
 
-        for(iter = list.iterator(); iter.hasNext(); baseValue *= 1.0D + amount) {
-            amount = (Double)iter.next();
+        for (iter = list.iterator(); iter.hasNext(); baseValue *= 1.0D + amount) {
+            amount = (Double) iter.next();
         }
 
-        for(iter = this.getModifiers(0).iterator(); iter.hasNext(); baseValue += amount) {
-            amount = (Double)iter.next();
+        for (iter = this.getModifiers(0).iterator(); iter.hasNext(); baseValue += amount) {
+            amount = (Double) iter.next();
         }
 
         return this.attribute.clampValue(baseValue);
     }
 
     public float getValue(float baseValue) {
-        return (float)this.getValue((double)baseValue);
+        return (float) this.getValue((double) baseValue);
     }
 }

@@ -13,16 +13,28 @@ public class Ability<T extends IAbility> implements Comparable<Ability>, Predica
     public String name;
     public Hero hero;
 
-    public Ability(String name, Hero hero){
+    public Ability(String name, Hero hero) {
         this.name = name;
         this.hero = hero;
+    }
+
+    public static void updateAbilities(EntityLivingBase entity, Hero hero, TickEvent.Phase phase) {
+        if (hero != null) {
+            UnmodifiableIterator var3 = hero.getAbilities().iterator();
+
+            while (var3.hasNext()) {
+                Ability ability = (Ability) var3.next();
+                ability.onUpdate(entity, hero, hero, phase);
+            }
+        }
+
     }
 
     public String getUnlocalizedName() {
         return "ability." + this.getHeroName();
     }
 
-    public String getHeroName(){
+    public String getHeroName() {
         return this.name;
     }
 
@@ -30,20 +42,7 @@ public class Ability<T extends IAbility> implements Comparable<Ability>, Predica
         return I18n.translateToLocal(this.getUnlocalizedName() + ".name");
     }
 
-
     public void onUpdate(EntityLivingBase entity, Hero hero, T instance, TickEvent.Phase phase) {
-    }
-
-    public static void updateAbilities(EntityLivingBase entity, Hero hero, TickEvent.Phase phase) {
-        if (hero != null) {
-            UnmodifiableIterator var3 = hero.getAbilities().iterator();
-
-            while(var3.hasNext()) {
-                Ability ability = (Ability)var3.next();
-                ability.onUpdate(entity, hero, hero, phase);
-            }
-        }
-
     }
 
     public int compareTo(Ability o) {
@@ -51,6 +50,6 @@ public class Ability<T extends IAbility> implements Comparable<Ability>, Predica
     }
 
     public boolean apply(Entity input) {
-        return input instanceof EntityLivingBase && ModHelper.hasAbility((EntityLivingBase)input, this);
+        return input instanceof EntityLivingBase && ModHelper.hasAbility((EntityLivingBase) input, this);
     }
 }

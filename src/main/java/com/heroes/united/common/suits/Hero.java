@@ -21,6 +21,7 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbility {
+
     private final ImmutableList<Ability> abilities;
     private final ImmutableList<Weakness> weaknesses;
     protected Item helmet;
@@ -41,6 +42,7 @@ public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbil
                     abilityBuilder.add(ability);
                 }
             }
+
             public void add(Hero hero, Weakness weakness) {
             }
         });
@@ -90,7 +92,7 @@ public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbil
         Item[] armor = this.getArmor();
         ItemStack[] itemstacks = new ItemStack[armor.length];
 
-        for(int i = 0; i < armor.length; ++i) {
+        for (int i = 0; i < armor.length; ++i) {
             if (armor[i] != null) {
                 itemstacks[i] = new ItemStack(armor[i]);
             }
@@ -99,11 +101,11 @@ public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbil
         return itemstacks;
     }
 
-    public String getHeroName(){
+    public String getHeroName() {
         return this.name;
     }
 
-    public Hero getHero(){
+    public Hero getHero() {
         return this.hero;
     }
 
@@ -150,7 +152,7 @@ public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbil
         Item[] var2 = this.getArmor();
         int var3 = var2.length;
 
-        for(int var4 = 0; var4 < var3; ++var4) {
+        for (int var4 = 0; var4 < var3; ++var4) {
             Item item = var2[var4];
             if (item != null) {
                 ++pieces;
@@ -175,10 +177,10 @@ public abstract class Hero implements Comparable<Hero>, Predicate<Entity>, IAbil
 
     public int compareTo(Hero o) {
         int i = this.getLocalizedName().compareTo(o.getLocalizedName());
-        return i == 0 ? Double.compare((double)this.getVersion().ordinal(), (double)o.getVersion().ordinal()) : i;
+        return i == 0 ? Double.compare((double) this.getVersion().ordinal(), (double) o.getVersion().ordinal()) : i;
     }
 
     public boolean apply(Entity input) {
-        return input instanceof EntityLivingBase && ModHelper.getHero((EntityLivingBase)input) == this;
+        return input instanceof EntityLivingBase && ModHelper.getHero((EntityLivingBase) input) == this;
     }
 }

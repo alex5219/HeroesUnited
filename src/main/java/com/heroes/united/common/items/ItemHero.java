@@ -25,10 +25,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-public class ItemHero extends ItemArmor implements ISpecialArmor, RegisterItemModel{
+public class ItemHero extends ItemArmor implements ISpecialArmor, RegisterItemModel {
+    private static final ArmorMaterial MATERIAL_ARMOR = EnumHelper.addArmorMaterial("Superhero", "Superhero", 128, new int[]{2, 4, 3, 2}, 30, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2.5F);
     private static boolean hideStats = false;
     private final Hero heroType;
-    private static final ArmorMaterial MATERIAL_ARMOR = EnumHelper.addArmorMaterial("Superhero", "Superhero", 128, new int[] {2, 4, 3, 2}, 30, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2.5F);
 
     public ItemHero(Hero hero, ArmorType type) {
         super(MATERIAL_ARMOR, 4, type.armorPiece);
@@ -71,7 +71,7 @@ public class ItemHero extends ItemArmor implements ISpecialArmor, RegisterItemMo
     }
 
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-        stack.damageItem((int)Math.max((float)damage / 4.0F, 1.0F), entity);
+        stack.damageItem((int) Math.max((float) damage / 4.0F, 1.0F), entity);
     }
 
     public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean b) {
@@ -97,15 +97,15 @@ public class ItemHero extends ItemArmor implements ISpecialArmor, RegisterItemMo
 
             Iterator var9 = abilities.iterator();
 
-            while(var9.hasNext()) {
-                Ability ability = (Ability)var9.next();
+            while (var9.hasNext()) {
+                Ability ability = (Ability) var9.next();
                 list.add(ChatFormatting.GREEN + "* " + ability.getLocalizedName());
             }
 
             var9 = weaknesses.iterator();
 
-            while(var9.hasNext()) {
-                Weakness weakness = (Weakness)var9.next();
+            while (var9.hasNext()) {
+                Weakness weakness = (Weakness) var9.next();
                 list.add(ChatFormatting.RED + "* " + weakness.getLocalizedName());
             }
 
@@ -146,6 +146,7 @@ public class ItemHero extends ItemArmor implements ISpecialArmor, RegisterItemMo
             return this == Hero;
         }
     }
+
     public enum ArmorVersion {
         NONE,
         MARVEL,
@@ -181,6 +182,7 @@ public class ItemHero extends ItemArmor implements ISpecialArmor, RegisterItemMo
         SHOES(EntityEquipmentSlot.FEET);
 
         public final EntityEquipmentSlot armorPiece;
+
         ArmorType(EntityEquipmentSlot slot) {
             this.armorPiece = slot;
         }

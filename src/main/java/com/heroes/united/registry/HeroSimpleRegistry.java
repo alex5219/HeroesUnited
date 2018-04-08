@@ -8,7 +8,7 @@ import net.minecraft.util.registry.RegistrySimple;
 import java.util.Map;
 import java.util.Set;
 
-public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends RegistrySimple{
+public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends RegistrySimple {
     protected final Map nameLookup;
     private final String defaultDomain;
     private final String defaultKey;
@@ -20,8 +20,7 @@ public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends Registry
         defaultKey = namespace(key);
     }
 
-    public T getDefaultValue()
-    {
+    public T getDefaultValue() {
         return defaultValue;
     }
 
@@ -32,8 +31,7 @@ public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends Registry
     public void putObject(String key, T value) {
         key = namespace(key);
 
-        if (defaultKey != null && key == defaultKey)
-        {
+        if (defaultKey != null && key == defaultKey) {
             defaultValue = value;
         }
 
@@ -41,30 +39,25 @@ public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends Registry
         super.putObject(key, value);
     }
 
-    public void putObject(Object key, Object value)
-    {
+    public void putObject(Object key, Object value) {
         putObject((String) key, (T) value);
     }
 
-    protected Map createUnderlyingMap()
-    {
+    protected Map createUnderlyingMap() {
         return HashBiMap.create();
     }
 
     @Override
-    public boolean containsKey(Object key)
-    {
+    public boolean containsKey(Object key) {
         return containsKey((String) key);
     }
 
-    public boolean containsValue(T value)
-    {
+    public boolean containsValue(T value) {
         return registryObjects.values().contains(value);
     }
 
     @Override
-    public T getObject(Object key)
-    {
+    public T getObject(Object key) {
         return getObject((String) key);
     }
 
@@ -74,8 +67,7 @@ public class HeroSimpleRegistry<T extends HeroRegistryEntry<T>> extends Registry
     }
 
     public T castDefault(T value) {
-        if (value == null)
-        {
+        if (value == null) {
             return getDefaultValue();
         }
 

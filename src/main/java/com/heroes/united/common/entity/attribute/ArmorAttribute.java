@@ -21,7 +21,7 @@ public class ArmorAttribute extends BaseAttribute {
     private String unlocalizedName;
 
     public ArmorAttribute(String unlocalizedName, double defaultValue, boolean additive) {
-        super(null,"armor." + unlocalizedName, defaultValue);
+        super(null, "armor." + unlocalizedName, defaultValue);
         this.globalUUIDs = Maps.newHashMap();
         this.isAdditive = additive;
         this.unlocalizedName = unlocalizedName;
@@ -31,12 +31,12 @@ public class ArmorAttribute extends BaseAttribute {
         this(unlocalizedName, 0.0D, additive);
     }
 
-    public String getUnlocalizedName(){
+    public String getUnlocalizedName() {
         return this.unlocalizedName;
     }
 
-    public UUID getUUID(){
-        Map.Entry<AttributePair, UUID> e = (Map.Entry)next();
+    public UUID getUUID() {
+        Map.Entry<AttributePair, UUID> e = (Map.Entry) next();
         UUID uuid = e.getValue();
         return uuid;
     }
@@ -47,8 +47,8 @@ public class ArmorAttribute extends BaseAttribute {
         ImmutableList<Map.Entry<AttributePair, UUID>> list = ImmutableList.copyOf(map.entrySet());
         UnmodifiableIterator var7 = list.iterator();
 
-        while(var7.hasNext()) {
-            Map.Entry<AttributePair, UUID> e = (Map.Entry)var7.next();
+        while (var7.hasNext()) {
+            Map.Entry<AttributePair, UUID> e = (Map.Entry) var7.next();
             UUID uuid = e.getValue();
             if (!validated.contains(uuid) && instance.getModifier(uuid) != null) {
                 this.reset(player, instance, uuid);

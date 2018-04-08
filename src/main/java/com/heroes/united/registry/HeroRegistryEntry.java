@@ -6,7 +6,8 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public class HeroRegistryEntry<T> implements IForgeRegistryEntry {
     public final HeroDelegate<T> delegate = new HeroDelegate<T>(this, getClass());
-    private TypeToken<T> token = new TypeToken<T>(getClass()) {};
+    private TypeToken<T> token = new TypeToken<T>(getClass()) {
+    };
 
     private ResourceLocation registryName = null;
 
@@ -18,17 +19,15 @@ public class HeroRegistryEntry<T> implements IForgeRegistryEntry {
         return setRegistryName(new ResourceLocation(domain, name));
     }
 
-    public final ResourceLocation getRegistryName()
-    {
+    public final ResourceLocation getRegistryName() {
         return registryName;
     }
 
-    public final String getDomain()
-    {
+    public final String getDomain() {
         return registryName.getResourceDomain();
     }
 
-    public final Class<T>  getRegistryType() {
+    public final Class<T> getRegistryType() {
         return (Class<T>) token.getRawType();
     }
 
