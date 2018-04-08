@@ -9,9 +9,9 @@ public class HeroDelegate<T> implements IRegistryDelegate<T> {
     private String name;
     private final Class<T> type;
 
-    public HeroDelegate(T referant, Class<T> type) {
-        this.referant = referant;
-        this.type = type;
+    public HeroDelegate(HeroRegistryEntry<T> referant, Class<? extends HeroRegistryEntry> type) {
+        this.referant = (T) referant;
+        this.type = (Class<T>) type;
     }
 
     public T get()
