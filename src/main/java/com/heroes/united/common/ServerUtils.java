@@ -4,14 +4,13 @@ import java.util.Iterator;
 
 public class ServerUtils {
     public ServerUtils() {
-
     }
 
     public static <T> T nonNull(T[] iter) {
         Object[] var1 = iter;
         int var2 = iter.length;
 
-        for(int var3 = 0; var3 < var2; ++var3) {
+        for (int var3 = 0; var3 < var2; ++var3) {
             T t = (T) var1[var3];
             if (t != null) {
                 return t;
@@ -29,7 +28,7 @@ public class ServerUtils {
             }
 
             t = var1.next();
-        } while(t == null);
+        } while (t == null);
 
         return (T) t;
     }
@@ -43,7 +42,7 @@ public class ServerUtils {
             }
 
             obj = var2.next();
-        } while(obj == null || !filter.isInstance(obj));
+        } while (obj == null || !filter.isInstance(obj));
 
         return (T) obj;
     }
